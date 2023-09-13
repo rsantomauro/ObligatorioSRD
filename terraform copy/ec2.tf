@@ -13,7 +13,7 @@ resource "aws_instance" "StoreWordpress" {
   key_name          = "rsantomauro"
   monitoring        = true
   security_groups   = [aws_security_group.sg_store_dmz.id]
-  subnet_id         = aws_subnet.store_public_subnet.id
+  subnet_id         = aws_subnet.dmz_private_subnet.id
   associate_public_ip_address = "true"
 
   tags = {
@@ -44,7 +44,7 @@ resource "aws_instance" "GestionStore" {
   key_name               = "rsantomauro"
   monitoring             = true
   security_groups        = [aws_security_group.sg_store_gestion.id]
-  subnet_id              = aws_subnet.store_public_subnet.id
+  subnet_id              = aws_subnet.gestion_private_subnet.id
   associate_public_ip_address = "true"
 
   tags = {
@@ -59,12 +59,12 @@ resource "aws_instance" "SiemStore" {
   instance_type          = "t2.micro"
   key_name               = "rsantomauro"
   monitoring             = true
-  security_groups        = [aws_security_group.sg_store_siem.id]
-  subnet_id              = aws_subnet.store_public_subnet.id
+  security_groups        = [aws_security_group.sg_store_gestion.id]
+  subnet_id              = aws_subnet.siem_private_subnet.id
   associate_public_ip_address = "true"
 
   tags = {
-    Name        = "SiemStore"
+    Name        = "GestionStore"
     Terraform   = "true"
     Environment = "Prod"
   }

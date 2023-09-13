@@ -17,7 +17,7 @@ resource "aws_security_group" "sg_store_dmz" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.cidr_block}10.0/24"]
+    cidr_blocks = ["${var.cidr_block}3.0/24"]
   }
   egress {
     from_port   = 0
@@ -44,7 +44,7 @@ resource "aws_security_group" "sg_store_bd" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.cidr_block}10.0/24"]
+    cidr_blocks = ["${var.cidr_block}3.0/24"]
   }
   egress {
     from_port   = 0
@@ -99,7 +99,7 @@ resource "aws_security_group" "sg_store_siem" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.cidr_block}10.0/24"]
+    cidr_blocks = ["${var.cidr_block}3.0/24"]
   }
   egress {
     from_port   = 0
